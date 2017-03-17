@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b41573c6-29d6-4771-b22d-abc914863141" activeEnvironment="Default" name="GroovyScripting" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="b49fa65f-b448-4657-9c70-833884f47098" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="7d9d3fc1-65fd-482d-ada1-53c5774094a1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="3d64a673-7086-439f-9198-bb6c1255bf89"><con:settings/><con:config><script>//Groovy Scripting
+//Printing in console 
+log.info "SoapUITrainingonline.com"
+//Declare Variables
+//Groovy Scripting is also called as loosly coupled language 
+
+def Trainer ="Abhilash"
+def videos=25
+def videos2=false
+assert videos==25
+log.info Trainer
+log.info "Number of videos present are"+videos
+log.info "Number of videos present are$videos"
+if(videos==25)
+{
+	log.info "Success"
+	}
+	else
+	{
+		log.info"Not Success"
+	}
+//for loop
+for(int i=0;i&lt;5;i++)
+{
+	log.info i 
+}
+//while loop
+def j=1
+while(j&lt;5)
+{
+	log.info j
+	j++
+}
+def abc =new String[5]//Array decl
+abc[0]="Soap"
+abc[1]="online"
+abc[2]="Training"
+abc[3]="IT"
+abc[4]="UI"
+log.info abc.size()
+for(def k=0;k&lt;5;k++)
+{
+	log.info abc[k]
+}
+log.info "Array size "+abc.size()
+</script></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script2" id="c10d383b-eb60-477e-86f2-8cb69aa3aa66"><con:settings/><con:config><script>def terms=["SoapUI","Training","online","IT"]
+log.info terms[0]
+log.info terms[2]
+for(def i=0;i&lt;4;i++)
+{
+	log.info terms[i]
+}
+//Exceptions
+try
+{
+def x=4/0
+}
+catch(Exception e)
+{
+log.info"script not able to handled"	
+}
+//Array List
+ArrayList ar=new ArrayList()
+ar.add("a")
+log.info ar.get(0)
+ar.add("b")
+log.info ar.get(1)
+//Hash Table(key,Value)
+Hashtable ht=new Hashtable()
+ht.put("Name","SoapUI")
+ht.put("Course","CS")
+log.info ht.get("Name")
+
+//Map
+def names=["Name":"SoapUI","Course":"CS"]
+log.info names["Name"]
+
+//List
+def course=[1,2,"SoapUI",4,5]
+log.info course[2]
+log.info course[4]
+</script></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script3" id="eb51d09b-7a0d-436d-9dd8-36b5b4b818ef"><con:settings/><con:config><script>def i=-66
+//Program to check with there the given number is even are odd number {If -else )
+
+if(i&lt;0)
+{
+	log.info "This is Negative value"
+	
+}
+else if (i%2==0)
+{
+	log.info "This is Even value"
+	}
+else
+{
+	log.info "This is Odd value"
+}
+</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:authRepository/><con:tags/></con:soapui-project>

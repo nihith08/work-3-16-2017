@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="Sample YouTube Project" resourceRoot="" soapui-version="5.3.0" id="6849ce4b-6c4b-442b-bb11-e5a951993f74" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="YouTube" type="rest" basePath="/" id="a98f9449-695c-4956-8a0c-57a8b48b17bd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache type="TEXT" rootPart=""/>
+        <con:endpoints>
+            <con:endpoint>http://gdata.youtube.com</con:endpoint>
+        </con:endpoints>
+        <con:resource name="feeds" path="feeds" id="e7b7d1b6-9f6e-4189-8652-1276f1eceb1c">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>alt</con:name>
+                    <con:value>atom</con:value>
+                    <con:style>QUERY</con:style>
+                    <con:default>atom</con:default>
+                    <con:option>atom</con:option>
+                    <con:option>json</con:option>
+                    <con:option>rss</con:option>
+                    <con:option>json-in-script</con:option>
+                    <con:option>jsonc</con:option>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>v</con:name>
+                    <con:value>2</con:value>
+                    <con:style>QUERY</con:style>
+                    <con:default>2</con:default>
+                    <con:option>1</con:option>
+                    <con:option>2</con:option>
+                    <con:option>2.1</con:option>
+                </con:parameter>
+            </con:parameters>
+            <con:resource name="videos" path="/api/videos" id="8cc42dfc-e03b-43ff-9a2d-501113467124">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>q</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>start-index</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>max-results</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="97e447bc-365c-4ebc-9400-10cd69afc046">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/atom+xml; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:atom="http://www.w3.org/2005/Atom">atom:feed</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:vid="http://gdata.youtube.com/feeds/api/videos">vid:Response</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/rss+xml; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>rss</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                    </con:representation>
+                    <con:representation type="FAULT">
+                        <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+                        <con:status>400</con:status>
+                        <con:params/>
+                        <con:element xmlns:vid="http://gdata.youtube.com/feeds/api/videos">vid:Fault</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:vid="http://gdata.youtube.com/feeds/api/videos">vid:Response</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="a081ceff-3ddb-4e52-b606-bf62feb0a268">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <con:entry key="alt" value="json-in-script"/>
+                            <con:entry key="q" value="soapui"/>
+                        </con:parameters>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="channels" path="/api/channels" id="cc7e6512-5233-4fb7-b75a-5f9356705c4e">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>q</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>start-index</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>max-results</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="a494f75b-eb06-4fb1-bec4-5d5c95c94d21">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/atom+xml; charset=UTF-8; type=feed</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:atom="http://www.w3.org/2005/Atom">atom:feed</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:chan="http://gdata.youtube.com/feeds/api/channels">chan:Response
+                        </con:element>
+                    </con:representation>
+                    <con:representation type="FAULT"><con:mediaType>application/vnd.google.gdata.error+xml</con:mediaType><con:status>410</con:status><con:params/><con:element xmlns:ns="http://schemas.google.com/g/2005">ns:errors</con:element></con:representation><con:request name="Request 1" mediaType="application/xml" id="37ed13f1-3233-4fb1-ad6a-6fc557f917ba">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="q" value="smartbear" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="standard" path="api/standardfeeds" id="772a0e8a-70b4-4ce4-b43e-e22308f055a4">
+                <con:settings/>
+                <con:parameters/>
+                <con:resource name="top_rated" path="top_rated" id="4d8e5cd4-9f28-432e-875d-289a7c9084ef">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:method name="Method 1" method="GET" id="5e046188-2db6-46c1-9e06-a043ca505e78">
+                        <con:settings/>
+                        <con:parameters/>
+                        <con:representation type="FAULT">
+                            <con:mediaType>application/vnd.google.gdata.error+xml</con:mediaType>
+                            <con:status>404 400</con:status>
+                            <con:params/>
+                            <con:element xmlns:ns="http://schemas.google.com/g/2005">ns:errors</con:element>
+                        </con:representation>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>application/atom+xml; charset=UTF-8; type=feed</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                            <con:element xmlns:atom="http://www.w3.org/2005/Atom">atom:feed</con:element>
+                        </con:representation>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>application/rss+xml; charset=UTF-8</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                            <con:element>rss</con:element>
+                        </con:representation>
+                        <con:request name="Request 1" mediaType="application/xml" id="3a6bb518-d02e-4d97-b6b4-9dfd12f7010f">
+                            <con:settings>
+                                <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                            </con:settings>
+                            <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                            <con:request/>
+                            <con:credentials>
+                                <con:authType>Global HTTP Settings</con:authType>
+                            </con:credentials>
+                            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                            <con:jmsPropertyConfig/>
+                            <con:parameters>
+                                <entry key="alt" value="rss" xmlns="http://eviware.com/soapui/config"/>
+                            </con:parameters>
+                        </con:request>
+                    </con:method>
+                </con:resource>
+                <con:resource name="most_popular" path="most_popular" id="9c8f4066-c32a-4096-87bd-72857acc0d1d">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:method name="Method 1" method="GET" id="54d23352-d249-4e7a-9b00-73c76cdc5665">
+                        <con:settings/>
+                        <con:parameters/>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                            <con:element xmlns:most="http://gdata.youtube.com/feeds/api/standardfeeds/most_popular">
+                                most:Response
+                            </con:element>
+                        </con:representation>
+                        <con:request name="Request 1" mediaType="application/xml" id="8277049a-5703-45b5-b80a-f92f67024766">
+                            <con:settings/>
+                            <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                            <con:request/>
+                            <con:credentials>
+                                <con:authType>Global HTTP Settings</con:authType>
+                            </con:credentials>
+                            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                            <con:jmsPropertyConfig/>
+                            <con:parameters/>
+                        </con:request>
+                    </con:method>
+                </con:resource>
+                <con:resource name="most_viewed" path="most_viewed" id="3b515fd8-66d4-463c-8eb0-82f27964b2a8">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:method name="Method 1" method="GET" id="44902c2a-03ad-45c8-ab96-c28593c1a0ce">
+                        <con:settings/>
+                        <con:parameters/>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>application/atom+xml; charset=UTF-8; type=feed</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                            <con:element xmlns:atom="http://www.w3.org/2005/Atom">atom:feed</con:element>
+                        </con:representation>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                        </con:representation>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>text/javascript;charset=UTF-8</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                        </con:representation>
+                        <con:request name="Request 1" mediaType="application/xml" id="3cfafd20-0493-42e6-bb1e-96ac7a7fb922">
+                            <con:settings>
+                                <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                            </con:settings>
+                            <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                            <con:request/>
+                            <con:credentials>
+                                <con:authType>Global HTTP Settings</con:authType>
+                            </con:credentials>
+                            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                            <con:jmsPropertyConfig/>
+                            <con:parameters/>
+                        </con:request>
+                    </con:method>
+                </con:resource>
+            </con:resource>
+        </con:resource>
+    </con:interface>
+    <con:testSuite name="TestSuite" id="237fcad5-a035-4a48-811b-c90df8752ae2">
+        <con:settings/>
+        <con:runType>SEQUENTIAL</con:runType>
+        <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase" searchProperties="true" id="ebc9d39a-3df0-417f-b80b-c08f213b582d">
+            <con:description>Basic requests with the YouTube API:
+                - Channel Search ; searches for channels named "smartbear" - JSON Response - validates that there is at
+                least one hit
+                - Video Search : searches for videos named "unprepared geeks" - ATOM XML Response - validates that there
+                is at least one hit
+                - Top Rated : validates that the top-rated RSS listing contains the correct youtube image
+                - Most Popular : validates that the Most Popular response in JSONC format contains the expected
+                access-control permissions
+                - Most Viewed : validates that the Most Viewed response in JSON-in-Script format starts with the
+                expected script call
+
+                see https://developers.google.com/youtube/2.0/developers_guide_protocol_audience
+            </con:description>
+            <con:settings/>
+            <con:testStep type="restrequest" name="Channel Search - JSON" id="e6be7e85-2b10-46d7-98db-2795fd33c9e0">
+                <con:settings/>
+                <con:config service="YouTube" resourcePath="/feeds/api/channels" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Channel Search - JSON" mediaType="application/xml" accept="" id="a8d1c7e3-7a14-4c7d-82d7-08647a3b1cf4">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://gdata.youtube.com/feeds/api/channels</con:originalUri><con:assertion type="XPath Match" name="Check count of [e]" id="4265d549-a4b3-4817-828f-7b637ad6057e">
+                            <con:configuration>
+                                <path>declare namespace ns1='http://gdata.youtube.com/feeds/api/channels';
+                                    count( //ns1:Response/ns1:feed/ns1:entry/ns1:e) > 0
+                                </path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <con:entry key="alt" value="json"/>
+                            <con:entry key="q" value="smartbear"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Video Search - ATOM" id="5000a5d5-acfc-4cda-8a15-64b7fb608a6f">
+                <con:settings/>
+                <con:config service="YouTube" resourcePath="/feeds/api/videos" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Video Search - ATOM" mediaType="application/xml" accept="" id="299de77c-2392-4ae3-b841-30e0c48f6656">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Check for existance of [entry]" id="5ecae527-9ffa-4d2f-891e-63f9e3b00759">
+                            <con:configuration>
+                                <path>declare namespace ns1='http://www.w3.org/2005/Atom';
+                                    exists( //ns1:feed/ns1:entry)
+                                </path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <con:entry key="v" value="1"/>
+                            <con:entry key="q" value="&quot;unprepared geeks&quot;"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Top Rated - RSS" id="c4ee2a40-581f-4eda-b210-f4587c286537">
+                <con:settings/>
+                <con:config service="YouTube" resourcePath="/feeds/api/standardfeeds/top_rated" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Top Rated - RSS" mediaType="application/xml" id="70f72305-bfe9-4e89-9858-a1a310d58a1e">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Match content of [image]" id="94f77109-5105-4657-96aa-7214d50e8977">
+                            <con:configuration>
+                                <path>//rss[1]/channel[1]/image[1]</path>
+                                <content><![CDATA[<image xmlns:app="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:gd="http://schemas.google.com/g/2005" xmlns:yt="http://gdata.youtube.com/schemas/2007">
+  <url>http://www.youtube.com/img/pic_youtubelogo_123x63.gif</url>
+  <title>Top Rated</title>
+  <link>http://www.youtube.com/channel/HCWKQJPHqP4J0</link>
+</image>]]></content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="alt" value="rss" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Most Popular - JSONC" id="c734fbc5-eed9-44e0-a0c7-b52c8f94c2a6">
+                <con:settings/>
+                <con:config service="YouTube" resourcePath="/feeds/api/standardfeeds/most_popular" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Most Popular - JSONC" mediaType="application/xml" accept="" id="9dcf21b1-86cc-463c-a05a-bf4c1b70a93a">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Match content of [accessControl]" id="a21b259d-7a37-4106-9e37-fc2fa02918f7">
+                            <con:configuration>
+                                <path>declare namespace
+                                    ns1='http://gdata.youtube.com/feeds/api/standardfeeds/most_popular';
+                                    //ns1:Response[1]/ns1:data[1]/ns1:items[1]/ns1:e[1]/ns1:accessControl[1]
+                                </path>
+                                <content><![CDATA[<accessControl xmlns="http://gdata.youtube.com/feeds/api/standardfeeds/most_popular">
+  <autoPlay>allowed</autoPlay>
+  <comment>allowed</comment>
+  <commentVote>allowed</commentVote>
+  <embed>allowed</embed>
+  <list>allowed</list>
+  <rate>allowed</rate>
+  <syndicate>allowed</syndicate>
+  <videoRespond>moderated</videoRespond>
+</accessControl>]]></content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="alt" value="jsonc" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Most Viewed - JSON in Script" id="44a2c704-9bf2-4a1d-9ab7-cc1ba5ea6b92">
+                <con:settings/>
+                <con:config service="YouTube" resourcePath="/feeds/api/standardfeeds/most_viewed" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Most Viewed - JSON in Script" mediaType="application/xml" accept="" id="43cf8437-41f9-44f4-843f-f2eedc92460d">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://gdata.youtube.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="Simple Contains" name="Contains" id="2e7a0b7d-07c5-410a-b576-cae457ddb72d">
+                            <con:configuration>
+                                <token>gdata\.io\.handleScriptLoaded(.*);</token>
+                                <ignoreCase>false</ignoreCase>
+                                <useRegEx>true</useRegEx>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="alt" value="json-in-script" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:properties/>
+            <con:reportParameters/>
+        </con:testCase>
+        <con:properties/>
+        <con:reportParameters/>
+    </con:testSuite>
+    <con:requirements/>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:databaseConnectionContainer/>
+    <con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting>
+        <con:xmlTemplates/>
+        <con:parameters/>
+    </con:reporting>
+    <con:sensitiveInformation/>
+</con:soapui-project>

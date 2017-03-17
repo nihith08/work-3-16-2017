@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="Sample Facebook Project" resourceRoot="" soapui-version="5.3.0" id="da2311c7-d24a-4c04-8665-7687b3eb9b20" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="Graph API" type="rest" basePath="" id="12d8d9ee-6f58-42ec-809d-65465dc934e2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache type="TEXT" rootPart=""/>
+        <con:endpoints>
+            <con:endpoint>https://graph.facebook.com</con:endpoint>
+        </con:endpoints>
+        <con:resource name="user" path="/{user}" id="209310e2-26f0-4b0b-9d0c-59b749b9c86b">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>user</con:name>
+                    <con:value>${#Project#facebook_user}</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                    <con:default>${#Project#facebook_user}</con:default>
+                    <con:path xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:resource name="picture" path="/picture" id="c4b840e0-8925-4a11-bcf0-3ae7e4506fe8">
+                <con:settings/>
+                <con:parameters/>
+                <con:method name="Method 1" method="GET" id="64c5018c-fd55-4e30-8e8e-c5e018a916ce">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:request name="Request 1" mediaType="application/xml" id="1e2cf47a-aaf9-415a-8441-2fea78012d2a">
+                        <con:settings/>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="feed" path="feed" id="eefef6c0-7037-4752-8094-37d9c32ef69b">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>access_token</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="Method 1" method="GET" id="70478827-26f6-4822-a248-b0a49365a6a8">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="FAULT">
+                        <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                        <con:status>400</con:status>
+                        <con:params/>
+                        <con:element xmlns:feed="https://graph.facebook.com/olensmar/feed">feed:Fault</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:feed="https://graph.facebook.com/olensmar/feed">feed:Response</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="1ac31c96-aba8-4f2c-ab2e-c4fc5539a512">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="access_token" value="${#Project#facebook_access_token}" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:method name="Method 1" method="GET" id="89849b1b-10ca-4898-9187-fea4bc659282">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                </con:representation>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                    <con:status>400</con:status>
+                    <con:params/>
+                </con:representation>
+                <con:request name="Request 1" mediaType="application/xml" id="00198b9f-6bb2-4fc8-b664-a93688d6c853">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>https://graph.facebook.com</con:endpoint>
+                    <con:request/>
+                    <con:credentials>
+                        <con:authType>Global HTTP Settings</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="group" path="/{group}" id="47a34bae-39db-42c0-9142-e126f85e3007">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>group</con:name>
+                    <con:value>smartbear</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                    <con:default>smartbear</con:default>
+                    <con:path xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:resource name="picture" path="/picture" id="18ecdd1d-433c-4abc-bf96-005e81b72026">
+                <con:settings/>
+                <con:parameters/>
+                <con:method name="Method 1" method="GET" id="bbf1d223-edbb-4779-ae42-e389f7a43cf8">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>image/jpeg</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>data</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="635801ac-c8db-40e0-8dd1-6edeeca8d685">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:method name="Method 1" method="GET" id="25fc5428-a920-4a40-8b95-60b8c0da2559">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                </con:representation>
+                <con:request name="Request 1" mediaType="application/xml" id="745ed981-2e5a-4c91-87c7-9d0c6fe2eccf">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>https://graph.facebook.com</con:endpoint>
+                    <con:request/>
+                    <con:credentials>
+                        <con:authType>Global HTTP Settings</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="me" path="/me" id="890035cc-2c3b-443d-81a1-dd68d7e893ec">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>access_token</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Method 1" method="GET" id="ae5ea6da-d21f-42e5-bbcf-b55dda65ca27">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                    <con:status>400</con:status>
+                    <con:params/>
+                    <con:element xmlns:me="https://graph.facebook.com/me">me:Fault</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>text/javascript; charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:me="https://graph.facebook.com/me">me:Response</con:element>
+                </con:representation>
+                <con:request name="Request 1" mediaType="application/xml" id="cf38501a-2ec7-4125-a8ce-b826b583a443">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>https://graph.facebook.com</con:endpoint>
+                    <con:request/>
+                    <con:credentials>
+                        <con:authType>Global HTTP Settings</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <entry key="access_token" value="${#Project#facebook_access_token}" xmlns="http://eviware.com/soapui/config"/>
+                    </con:parameters>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:testSuite name="TestSuite 1" id="2158aa1e-9543-45e7-bdab-31c060db124b">
+        <con:settings/>
+        <con:runType>SEQUENTIAL</con:runType>
+        <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true" id="62897481-5aff-4dc2-a798-5400398ab6ad">
+            <con:description>Simple test to validate that the User data contains the correct link and the User Feed
+                contains at least 10 entries - would work well as a monitor.
+
+                See https://developers.facebook.com/docs/reference/api/
+            </con:description>
+            <con:settings/>
+            <con:testStep type="restrequest" name="User request" id="e2ddb974-82d3-445e-bd65-4898ba689f26">
+                <con:settings/>
+                <con:config service="Graph API" resourcePath="/{user}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="User request" mediaType="application/xml" id="08341f33-b6e6-42ea-8cce-9844120c3c16">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>https://graph.facebook.com/</con:originalUri><con:assertion type="XPath Match" name="Match content of [link]" id="f3b73f54-4494-41c6-91e2-96092595ff9d">
+                            <con:configuration>
+                                <path>declare namespace ns1='https://graph.facebook.com/olensmar';
+                                    //ns1:Response[1]/ns1:link[1]/text()
+                                </path>
+                                <content>http://www.facebook.com/${#Project#facebook_user}</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Me Request" id="c5bfd5bf-4e9d-44a3-b174-1d80b5982ad4">
+                <con:settings/>
+                <con:config service="Graph API" resourcePath="/me" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Me Request" mediaType="application/xml" id="1dbbac07-2547-4a3d-a254-2fe5a2ca08e8">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>https://graph.facebook.com/me</con:originalUri><con:assertion type="XPath Match" name="Match content of [link]" id="d19bce68-18fb-4ee0-b191-dd9f7a43bd97">
+                            <con:configuration>
+                                <path>declare namespace ns1='https://graph.facebook.com/me';
+                                    //ns1:Response[1]/ns1:link[1]/text()
+                                </path>
+                                <content>
+                                    ${User request#ResponseAsXml#declare namespace ns1='https://graph.facebook.com/olensmar'; //ns1:Response[1]/ns1:link[1]}
+                                </content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="access_token" value="${#Project#facebook_access_token}" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="transfer" name="Property Transfer" id="61e93e98-01be-4bbb-b61f-2a1a5f5581f7">
+                <con:settings/>
+                <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
+                        <con:name>userid</con:name>
+                        <con:sourceType>ResponseAsXml</con:sourceType>
+                        <con:sourceStep>User request</con:sourceStep>
+                        <con:sourcePath>declare namespace ns1='https://graph.facebook.com/olensmar';
+                            //ns1:Response[1]/ns1:username[1]
+                        </con:sourcePath>
+                        <con:targetType>user</con:targetType>
+                        <con:targetStep>User Feed</con:targetStep>
+                    <con:upgraded>true</con:upgraded></con:transfers>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="User Feed" id="ea5be42b-5b4b-418a-b0d7-ff38f1ae8feb">
+                <con:settings/>
+                <con:config service="Graph API" resourcePath="/{user}/feed" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="User Feed" mediaType="application/xml" id="3e7349f6-3d7f-466a-a485-bb12dc8078ed">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://graph.facebook.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Check count of [actions]" id="3d2e6d6f-afb3-4474-ac87-1a6eaf3e4815">
+                            <con:configuration>
+                                <path>declare namespace ns1='https://graph.facebook.com/olensmar/feed';
+                                    count( //ns1:Response/ns1:data/ns1:e)>10
+                                </path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters><entry key="access_token" value="${#Project#facebook_access_token}" xmlns="http://eviware.com/soapui/config"/></con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:properties/>
+            <con:reportParameters/>
+            <con:breakPoints>
+                <con:testStepId>61e93e98-01be-4bbb-b61f-2a1a5f5581f7</con:testStepId>
+                <con:status>NONE</con:status>
+                <con:properties/>
+            </con:breakPoints>
+            <con:breakPoints>
+                <con:testStepId>c5bfd5bf-4e9d-44a3-b174-1d80b5982ad4</con:testStepId>
+                <con:status>NONE</con:status>
+                <con:properties/>
+            </con:breakPoints>
+        </con:testCase>
+        <con:properties/>
+        <con:reportParameters/>
+    </con:testSuite>
+    <con:requirements/>
+    <con:properties>
+        <con:property>
+            <con:name>facebook_user</con:name>
+            <con:value/>
+        </con:property>
+        <con:property>
+            <con:name>facebook_access_token</con:name>
+            <con:value/>
+        </con:property>
+    </con:properties>
+    <con:wssContainer/>
+    <con:databaseConnectionContainer/>
+    <con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting>
+        <con:reportTemplates/>
+        <con:xmlTemplates/>
+        <con:parameters/>
+    </con:reporting>
+    <con:sensitiveInformation/>
+</con:soapui-project>
